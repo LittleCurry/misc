@@ -1,7 +1,7 @@
 package model
 
 type User struct {
-	Id           int    `xorm:"not null pk autoincr unique INT(11)"`
+	Id           string `xorm:"not null pk autoincr unique INT(11)"`
 	UserId       string `xorm:"not null default '' unique VARCHAR(20)"`
 	Phone        string `xorm:"default '' VARCHAR(50)"`
 	Passwd       string `xorm:"default '' VARCHAR(50)"`
@@ -15,4 +15,5 @@ type User struct {
 	Introduction string `xorm:"default '' VARCHAR(50)"`
 	Del          int    `xorm:"default 0 TINYINT(1)"`
 	CreateTime   string `xorm:"default '2006-01-02 15:04:05' VARCHAR(30)"`
+	UpdateTime   string `xorm:"default '2006-01-02 15:04:05' VARCHAR(30)"`
 }
