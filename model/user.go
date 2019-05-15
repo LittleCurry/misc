@@ -1,7 +1,7 @@
 package model
 
 type User struct {
-	Id           string `xorm:"not null pk autoincr unique INT(11)"`
+	Id           int `xorm:"not null pk autoincr unique INT(11)"`
 	UserId       string `xorm:"not null default '' unique VARCHAR(20)"`
 	Phone        string `xorm:"default '' VARCHAR(50)"`
 	Passwd       string `xorm:"default '' VARCHAR(50)"`
