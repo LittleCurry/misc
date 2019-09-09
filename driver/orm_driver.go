@@ -1,4 +1,4 @@
-package driver
+package misc
 
 import (
 	_ "github.com/go-sql-driver/mysql"

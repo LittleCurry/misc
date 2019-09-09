@@ -1,4 +1,4 @@
-package globals
+package misc
 
 import (
 	"github.com/gin-gonic/gin"
@@ -38,3 +38,4 @@ func GetMacAdress() string {
 	return strings.Replace(macAddress, ":", "", -1)
 
 }
+

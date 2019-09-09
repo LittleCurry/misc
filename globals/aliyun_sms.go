@@ -1,4 +1,4 @@
-package globals
+package misc
 
 import (
 	"io/ioutil"
@@ -250,7 +250,7 @@ func SmsCode(phone string, code string) error {
 		return err
 	}
 	if result.isSuccessful() {
-		fmt.Println("A SMS is sent successfully:", resultJson)
+		fmt.Println(phone+"sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))
@@ -285,7 +285,7 @@ func SmsMsg(phone string, msg string, time string) error {
 		return err2
 	}
 	if result.isSuccessful() {
-		fmt.Println("A SMS is sent successfully:", resultJson)
+		fmt.Println(phone+"sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))
@@ -318,7 +318,39 @@ func SmsMsgInfo(phone string, msg string, info string) error {
 		return err2
 	}
 	if result.isSuccessful() {
-		fmt.Println("A SMS is sent successfully:", resultJson)
+		fmt.Println(phone+"sent successfully")
+		return nil
+	} else {
+		fmt.Println("Failed to send a SMS2:", string(resultJson))
+		return errors.New(string(resultJson))
+	}
+}
+
+func RefundMsg(phone string, orderId string) error {
+
+	var (
+		gatewayUrl      = "http://dysmsapi.aliyuncs.com/"
+		accessKeyId     = "LTAIiEQnQoRXF7CC"
+		accessKeySecret = "twbBohqIebq6nz3PXLSxTwtCZbegbs"
+		phoneNumbers    = phone
+		signName        = "之炜物联"
+		templateCode    = "SMS_172206417"
+		templateParam   = `{"order_id":"` + orderId + `"}`
+	)
+
+	smsClient := newClient(gatewayUrl)
+	result, err1 := smsClient.execute(accessKeyId, accessKeySecret, phoneNumbers, signName, templateCode, templateParam)
+	if err1 != nil {
+		fmt.Println("err1:", err1)
+		return err1
+	}
+	resultJson, err2 := json.Marshal(result)
+	if err2 != nil {
+		fmt.Println("err2:", err2)
+		return err2
+	}
+	if result.isSuccessful() {
+		fmt.Println(phone+"sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))

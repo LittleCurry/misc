@@ -1,8 +1,7 @@
-package helpers
+package misc
 
 import (
 	"fmt"
-
 	"github.com/spf13/viper"
 )
 

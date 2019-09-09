@@ -1,4 +1,4 @@
-package globals
+package misc
 
 import (
 	"io"
