@@ -1,4 +1,4 @@
-package misc
+package err_msg
 
 type ErrMsg struct {
 	Info string `json:"info"`

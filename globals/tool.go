@@ -1,4 +1,4 @@
-package misc
+package globals
 
 import (
 	"github.com/gin-gonic/gin"

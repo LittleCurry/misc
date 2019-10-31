@@ -1,19 +1,19 @@
-package misc
+package globals
 
 import (
-	"io/ioutil"
-	"encoding/base32"
-	"encoding/base64"
-	"time"
-	"sort"
 	"crypto/hmac"
 	"crypto/sha1"
+	"encoding/base32"
+	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"fmt"
-	"net/url"
-	"strings"
+	"io/ioutil"
 	"net/http"
-	"encoding/json"
+	"net/url"
+	"sort"
+	"strings"
+	"time"
 )
 
 type smsResponse struct {
@@ -250,7 +250,7 @@ func SmsCode(phone string, code string) error {
 		return err
 	}
 	if result.isSuccessful() {
-		fmt.Println(phone+"sent successfully")
+		fmt.Println(phone + "sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))
@@ -285,7 +285,7 @@ func SmsMsg(phone string, msg string, time string) error {
 		return err2
 	}
 	if result.isSuccessful() {
-		fmt.Println(phone+"sent successfully")
+		fmt.Println(phone + "sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))
@@ -293,7 +293,7 @@ func SmsMsg(phone string, msg string, time string) error {
 	}
 }
 
-func SmsMsgInfo(phone string, msg string, info string) error {
+func SmsMsgInfo(phone string, msg string, info string, activity_id string) error {
 
 	var (
 		gatewayUrl      = "http://dysmsapi.aliyuncs.com/"
@@ -303,7 +303,7 @@ func SmsMsgInfo(phone string, msg string, info string) error {
 		signName        = "之炜物联"
 		templateCode    = "SMS_158547266"
 		//templateCode    = "SMS_159770489"
-		templateParam   = `{"msg":"` + msg + `", "info":"` + info + `"}`
+		templateParam = `{"msg":"` + msg + `", "info":"` + info + `"}`
 	)
 
 	smsClient := newClient(gatewayUrl)
@@ -318,7 +318,7 @@ func SmsMsgInfo(phone string, msg string, info string) error {
 		return err2
 	}
 	if result.isSuccessful() {
-		fmt.Println(phone+"sent successfully")
+		fmt.Println(phone + "sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))
@@ -350,7 +350,7 @@ func RefundMsg(phone string, orderId string) error {
 		return err2
 	}
 	if result.isSuccessful() {
-		fmt.Println(phone+"sent successfully")
+		fmt.Println(phone + "sent successfully")
 		return nil
 	} else {
 		fmt.Println("Failed to send a SMS2:", string(resultJson))

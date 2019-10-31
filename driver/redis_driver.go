@@ -1,8 +1,8 @@
-package misc
+package driver
 
 import (
-	"gopkg.in/redis.v5"
 	"fmt"
+	"gopkg.in/redis.v5"
 )
 
 const REDIS_KEY_PREFIX = "AccessToken"

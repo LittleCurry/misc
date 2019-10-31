@@ -1,4 +1,4 @@
-package misc
+package globals
 
 import (
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"

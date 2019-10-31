@@ -1,7 +1,6 @@
-package misc
+package driver
 
 import (
-
 	"fmt"
 	"gopkg.in/mgo.v2"
 	"strings"

@@ -1,4 +1,4 @@
-package misc
+package globals
 
 import (
 	"io/ioutil"

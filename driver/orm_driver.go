@@ -1,9 +1,9 @@
-package misc
+package driver
 
 import (
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
-	"fmt"
 )
 
 var engine *xorm.Engine
