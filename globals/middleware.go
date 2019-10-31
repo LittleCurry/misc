@@ -3,10 +3,10 @@ package globals
 import (
 	"github.com/gin-gonic/gin"
 	"fmt"
-	"misc/driver"
+	"misc/drivers"
 	"strings"
 	"net/http"
-	"misc/err_msg"
+	"misc/msg"
 )
 
 func KeyAuth() gin.HandlerFunc {
@@ -20,19 +20,19 @@ func KeyAuth() gin.HandlerFunc {
 			}
 		}
 		if len(token) <= 0 {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, err_msg.ErrMsg{"登录过期, 请重新登录"})
+			c.AbortWithStatusJSON(http.StatusUnauthorized, msg.ErrMsg{"登录过期, 请重新登录"})
 			return
 		}
 
-		userId, err1 := driver.RedisClient.Get("AccessToken" + "-" + token).Result()
+		userId, err1 := drivers.RedisClient.Get("AccessToken" + "-" + token).Result()
 		if err1 != nil {
 			fmt.Println("err1: ", err1)
-			c.AbortWithStatusJSON(http.StatusUnauthorized, err_msg.ErrMsg{"登录过期, 请重新登录"})
+			c.AbortWithStatusJSON(http.StatusUnauthorized, msg.ErrMsg{"登录过期, 请重新登录"})
 			return
 		}
 		c.Set("userId", userId)
 
-		userType, err2 := driver.RedisClient.Get("AccessTokenType-" + token).Result()
+		userType, err2 := drivers.RedisClient.Get("AccessTokenType-" + token).Result()
 		if err2 == nil {
 			c.Set("userType", userType)
 		} else {
