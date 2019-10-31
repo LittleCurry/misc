@@ -1,4 +1,4 @@
-module misc
+module github.com/LittleCurry/misc
 
 go 1.13
 
