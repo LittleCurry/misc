@@ -1,12 +1,12 @@
 package globals
 
 import (
+	"github.com/LittleCurry/misc/drivers"
+	"github.com/LittleCurry/misc/msg"
 	"github.com/gin-gonic/gin"
 	"fmt"
-	"misc/drivers"
 	"strings"
 	"net/http"
-	"misc/msg"
 )
 
 func KeyAuth() gin.HandlerFunc {
