@@ -1,5 +1,6 @@
 package msg
 
+
 type ErrMsg struct {
 	Info string `json:"info"`
 }
